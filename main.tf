@@ -15,9 +15,9 @@ resource "tfe_workspace" "this" {
   working_directory         = "${each.key}/"
 
   vcs_repo {
-    branch             = each.value.vcs["branch"]
-    identifier         = each.value.vcs["identifier"]
-    ingress_submodules = each.value.vcs["ingress_submodules"]
-    oauth_token_id     = each.value.vcs["oauth_token_id"]
+    branch             = var.vcs["branch"]
+    identifier         = var.vcs["identifier"]
+    ingress_submodules = var.vcs["ingress_submodules"]
+    oauth_token_id     = var.vcs["oauth_token_id"]
   }
 }

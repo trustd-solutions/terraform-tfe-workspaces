@@ -7,7 +7,6 @@ vcs = {
 
 workspaces = {
   cloudtrail = {
-    terraform_version         = "1.0.0"
     allow_destroy_plan        = true
     auto_apply                = true
     description               = "AWS CloudTrail Terraform Cloud Workspace"
@@ -15,6 +14,8 @@ workspaces = {
     global_remote_state       = true
     queue_all_runs            = false
     remote_state_consumer_ids = []
+    tag_names                 = ["tag1", "tag2"]
+    terraform_version         = "1.0.0"
     speculative_enabled       = true
     env_vars = {
       key  = "value",

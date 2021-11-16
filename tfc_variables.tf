@@ -1,31 +1,35 @@
 resource "tfe_variable" "terraform_secret" {
-  key          = "environment"
-  value        = var.environment
+  for_each     = { for v in local.sensitive_terraform_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "terraform"
   sensitive    = "true"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "terraform_variable" {
-  key          = "environment"
-  value        = var.environment
+  for_each     = { for v in local.terraform_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "terraform"
   sensitive    = "false"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "environment_secret" {
-  key          = "github_token"
-  value        = var.oauth_token_id
+  for_each     = { for v in local.sensitive_env_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "env"
   sensitive    = "true"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "environment_variable" {
-  key          = var.aws_access_key_id
-  value        = var.aws_access_key_id_value
+  for_each     = { for v in local.env_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "env"
   sensitive    = "false"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }

@@ -10,6 +10,7 @@ workspaces = {
     allow_destroy_plan        = true
     auto_apply                = true
     description               = "AWS CloudTrail Terraform Cloud Workspace"
+    environment               = "dev"
     execution_mode            = "remote"
     global_remote_state       = true
     queue_all_runs            = false

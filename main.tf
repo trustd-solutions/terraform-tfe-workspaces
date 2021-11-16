@@ -6,7 +6,7 @@ resource "tfe_workspace" "this" {
   execution_mode            = each.value.execution_mode
   global_remote_state       = each.value.global_remote_state
   name                      = "${each.key}-${each.value.environment}"
-  organization              = each.value.terraform_cloud_org
+  organization              = var.terraform_cloud_org
   queue_all_runs            = each.value.queue_all_runs
   remote_state_consumer_ids = each.value.remote_state_consumer_ids
   speculative_enabled       = each.value.speculative_enabled

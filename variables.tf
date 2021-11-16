@@ -4,6 +4,7 @@ variable "workspaces" {
     allow_destroy_plan        = bool
     auto_apply                = bool
     description               = string
+    environment               = string
     execution_mode            = string
     global_remote_state       = bool
     queue_all_runs            = bool

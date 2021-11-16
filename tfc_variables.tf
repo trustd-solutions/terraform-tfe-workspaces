@@ -1,35 +1,35 @@
 resource "tfe_variable" "terraform_secret" {
-  for_each     = var.workspaces
-  key          = each.value.sensitive_terraform_vars.key
-  value        = each.value.sensitive_terraform_vars.value
+  for_each     = { for v in local.sensitive_terraform_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "terraform"
   sensitive    = "true"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "terraform_variable" {
-  for_each     = var.workspaces
-  key          = each.value.terraform_vars.key
-  value        = each.value.terraform_vars.value
+  for_each     = { for v in local.terraform_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "terraform"
   sensitive    = "false"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "environment_secret" {
-  for_each     = var.workspaces
-  key          = each.value.sensitive_env_vars.key
-  value        = each.value.sensitive_env_vars.value
+  for_each     = { for v in local.sensitive_env_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "env"
   sensitive    = "true"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
 resource "tfe_variable" "environment_variable" {
-  for_each     = var.workspaces
-  key          = each.value.env_vars.key
-  value        = each.value.env_vars.value
+  for_each     = { for v in local.env_vars : "${v.workspace_name}.${v.var_value}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
   category     = "env"
   sensitive    = "false"
-  workspace_id = tfe_workspace.this[each.key].id
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }

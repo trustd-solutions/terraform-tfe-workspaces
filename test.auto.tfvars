@@ -17,20 +17,20 @@ workspaces = {
     remote_state_consumer_ids = []
     speculative_enabled       = true
     env_vars = {
-      key  = value,
-      key1 = value1,
+      key  = "value",
+      key1 = "value1",
     }
     sensitive_env_vars = {
-      key  = value,
-      key1 = value1,
+      key  = "value",
+      key1 = "value1",
     }
     terraform_vars = {
-      key  = value,
-      key1 = value1,
+      key  = "value",
+      key1 = "value1",
     }
     sensitive_terraform_vars = {
-      key  = value,
-      key1 = value1,
+      key  = "value",
+      key1 = "value1",
     }
   },
 }

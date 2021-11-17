@@ -13,9 +13,9 @@ variable "workspaces" {
     terraform_version         = string
     speculative_enabled       = bool
     env_vars                  = map(string)
-    sensitive_env_vars        = map(string)
     terraform_vars            = map(string)
-    sensitive_terraform_vars  = map(string)
+    sensitive_env_vars        = list(string)
+    sensitive_terraform_vars  = list(string)
   }))
 }
 

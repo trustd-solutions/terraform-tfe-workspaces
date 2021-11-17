@@ -11,10 +11,9 @@ locals {
 
   sensitive_env_vars = flatten([
     for wk, workspace in var.workspaces : [
-      for var_key, var_value in workspace.sensitive_env_vars : {
+      for item in workspace.sensitive_env_vars : {
         workspace_name = wk
-        var_key        = var_key
-        var_value      = var_value
+        item           = item
       }
     ]
   ])
@@ -31,10 +30,9 @@ locals {
 
   sensitive_terraform_vars = flatten([
     for wk, workspace in var.workspaces : [
-      for var_key, var_value in workspace.sensitive_terraform_vars : {
+      for item in workspace.sensitive_terraform_vars : {
         workspace_name = wk
-        var_key        = var_key
-        var_value      = var_value
+        item           = item
       }
     ]
   ])

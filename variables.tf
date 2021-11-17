@@ -21,12 +21,7 @@ variable "workspaces" {
 
 variable "vcs" {
   description = "Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow."
-  type = object({
-    identifier         = string
-    branch             = string
-    ingress_submodules = bool
-    oauth_token_id     = string
-  })
+  type        = any
 }
 
 variable "terraform_cloud_org" {

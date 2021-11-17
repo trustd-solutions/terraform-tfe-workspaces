@@ -13,7 +13,6 @@ resource "tfe_workspace" "this" {
   tag_names                 = each.value.tag_names
   terraform_version         = each.value.terraform_version
   working_directory         = "${each.key}/"
-
   vcs_repo {
     branch             = var.vcs["branch"]
     identifier         = var.vcs["identifier"]

@@ -1,8 +1,13 @@
 terraform {
-  backend "remote" {
-    organization = var.terraform_cloud_org
-    workspaces {
-      name = var.terraform_cloud_workspace_name
+  required_version = "1.0.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.45.0"
+    }
+    template = {
+      source  = "hashicorp/template"
+      version = "2.2.0"
     }
   }
 }

@@ -3,7 +3,7 @@ resource "tfe_variable" "terraform_secret" {
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "terraform"
-  sensitive    = "true"
+  sensitive    = true
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
@@ -12,7 +12,6 @@ resource "tfe_variable" "terraform_variable" {
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "terraform"
-  sensitive    = "false"
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
@@ -21,7 +20,7 @@ resource "tfe_variable" "environment_secret" {
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "env"
-  sensitive    = "true"
+  sensitive    = true
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
 
@@ -30,6 +29,5 @@ resource "tfe_variable" "environment_variable" {
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "env"
-  sensitive    = "false"
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }

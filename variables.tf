@@ -19,6 +19,12 @@ variable "workspaces" {
   }))
 }
 
+variable "prefix" {
+  description = "Workspace prefix, for instance gcp, terraform, aws, cloudflare etc"
+  type        = string
+  default     = null
+}
+
 variable "vcs" {
   description = "Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow."
   type        = any

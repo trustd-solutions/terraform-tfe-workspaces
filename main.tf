@@ -12,7 +12,7 @@ resource "tfe_workspace" "this" {
   speculative_enabled       = each.value.speculative_enabled
   tag_names                 = each.value.tag_names
   terraform_version         = each.value.terraform_version
-  working_directory         = "${each.key}/"
+  working_directory         = "${local.prefix}/${each.key}/"
   vcs_repo {
     branch             = var.vcs["branch"]
     identifier         = var.vcs["identifier"]

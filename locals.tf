@@ -1,4 +1,5 @@
 locals {
+  prefix = var.prefix != null ? var.prefix : ""
   env_vars = flatten([
     for wk, workspace in var.workspaces : [
       for var_key, var_value in workspace.env_vars : {

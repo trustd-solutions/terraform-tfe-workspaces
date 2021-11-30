@@ -3,6 +3,7 @@ variable "workspaces" {
   type = map(object({
     allow_destroy_plan        = bool
     auto_apply                = bool
+    prefix                    = string
     description               = string
     environment               = string
     execution_mode            = string
@@ -17,12 +18,6 @@ variable "workspaces" {
     sensitive_env_vars        = list(string)
     sensitive_terraform_vars  = list(string)
   }))
-}
-
-variable "prefix" {
-  description = "Workspace prefix, for instance gcp, terraform, aws, cloudflare etc"
-  type        = string
-  default     = null
 }
 
 variable "vcs" {

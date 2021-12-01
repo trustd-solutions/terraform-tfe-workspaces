@@ -3,6 +3,7 @@ variable "workspaces" {
   type = map(object({
     allow_destroy_plan        = bool
     auto_apply                = bool
+    prefix                    = string
     description               = string
     environment               = string
     execution_mode            = string

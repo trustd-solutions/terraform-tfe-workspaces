@@ -1,8 +1,8 @@
 locals {
   vendors = {
-    "GOOGLE_CREDENTIALS"    = var.GOOGLE_CREDENTIALS
-    "AWS_SECRET_ACCESS_KEY" = var.AWS_SECRET_ACCESS_KEY
-    "AWS_SECRET_KEY_ID"     = var.AWS_SECRET_KEY_ID
+    "GOOGLE_CREDENTIALS"    = var.GOOGLE_CREDENTIALS == null ? "not-used" : var.GOOGLE_CREDENTIALS
+    "AWS_SECRET_ACCESS_KEY" = var.AWS_SECRET_ACCESS_KEY == null ? "not-used" : var.AWS_SECRET_ACCESS_KEY
+    "AWS_SECRET_KEY_ID"     = var.AWS_SECRET_KEY_ID == null ? "not-used" : var.AWS_SECRET_KEY_ID
   }
 
   vendor_sensitive = flatten([

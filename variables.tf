@@ -44,17 +44,17 @@ variable "terraform_cloud_token" {
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS secret access key"
   type        = string
-  default     = null
+  default     = "disabled"
 }
 
 variable "AWS_SECRET_KEY_ID" {
   description = "AWS secret key id"
   type        = string
-  default     = null
+  default     = "disabled"
 }
 
 variable "GOOGLE_CREDENTIALS" {
   description = "GCP Credentials"
   type        = string
-  default     = null
+  default     = "disabled"
 }

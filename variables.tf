@@ -17,7 +17,7 @@ variable "workspaces" {
     terraform_vars            = map(string)
     sensitive_env_vars        = list(string)
     sensitive_terraform_vars  = list(string)
-    vendors_vars              = map(string)
+    vendors_vars              = list(string)
   }))
 }
 

@@ -44,14 +44,17 @@ variable "terraform_cloud_token" {
 variable "GOOGLE_CREDENTIALS" {
   description = "Google credentials value"
   type        = string
+  default     = ""
 }
 
 variable "AWS_SECRET_KEY_ID" {
   description = "AWS secret key id"
   type        = string
+  default     = ""
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS secret key id"
   type        = string
+  default     = ""
 }

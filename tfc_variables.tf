@@ -31,3 +31,12 @@ resource "tfe_variable" "environment_variable" {
   category     = "env"
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
 }
+
+resource "tfe_variable" "vendors_secrets" {
+  for_each     = { for v in local.vendor_sensitive : "${v.workspace_name}.${v.var_key}" => v }
+  key          = each.value.var_key
+  value        = each.value.var_value
+  category     = "env"
+  sensitive    = true
+  workspace_id = tfe_workspace.this[each.value.workspace_name].id
+}

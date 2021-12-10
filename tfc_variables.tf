@@ -37,6 +37,6 @@ resource "tfe_variable" "vendors_secrets" {
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "env"
-  sensitive    = true
   workspace_id = tfe_workspace.this[each.value.workspace_name].id
+  #sensitive    = true # removing sensitive for now
 }

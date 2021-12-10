@@ -1,6 +1,6 @@
 locals {
   vendors = {
-    "GOOGLE_CREDENTIALS"    = tostring(try(var.GOOGLE_CREDENTIALS, null))
+    "GOOGLE_CREDENTIALS"    = tostring(try(var.GOOGLE_CREDENTIALS, "test"))
     "AWS_SECRET_ACCESS_KEY" = tostring(try(var.AWS_SECRET_ACCESS_KEY, null))
     "AWS_SECRET_KEY_ID"     = tostring(try(var.AWS_SECRET_KEY_ID, null))
   }

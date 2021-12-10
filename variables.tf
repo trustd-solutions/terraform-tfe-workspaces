@@ -44,4 +44,5 @@ variable "terraform_cloud_token" {
 variable "GOOGLE_CREDENTIALS" {
   description = "Google credentials"
   type        = string
+  default     = null
 }

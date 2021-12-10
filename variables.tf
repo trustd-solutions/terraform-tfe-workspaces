@@ -40,21 +40,3 @@ variable "terraform_cloud_token" {
   description = "The Team token used to authenticate with Terraform Cloud. See [Authentication](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs#authentication) for more information"
   type        = string
 }
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  description = "AWS secret access key"
-  type        = string
-  default     = "disabled"
-}
-
-variable "AWS_SECRET_KEY_ID" {
-  description = "AWS secret key id"
-  type        = string
-  default     = "disabled"
-}
-
-variable "GOOGLE_CREDENTIALS" {
-  description = "GCP Credentials"
-  type        = string
-  default     = "disabled"
-}

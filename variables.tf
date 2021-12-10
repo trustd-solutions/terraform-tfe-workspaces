@@ -40,3 +40,8 @@ variable "terraform_cloud_token" {
   description = "The Team token used to authenticate with Terraform Cloud. See [Authentication](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs#authentication) for more information"
   type        = string
 }
+
+variable "GOOGLE_CREDENTIALS" {
+  description = "Google credentials"
+  type        = string
+}

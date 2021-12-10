@@ -1,8 +1,9 @@
 locals {
   vendors = {
-    "GOOGLE_CREDENTIALS"    = var.GOOGLE_CREDENTIALS
-    "AWS_SECRET_ACCESS_KEY" = var.AWS_SECRET_ACCESS_KEY == "disabled" ? var.AWS_SECRET_ACCESS_KEY : "not-used"
-    "AWS_SECRET_KEY_ID"     = var.AWS_SECRET_KEY_ID == "disabled" ? var.AWS_SECRET_KEY_ID : "not-used"
+    "GOOGLE_CREDENTIALS" = tostring(try(var.GOOGLE_CREDENTIALS, null))
+
+    #"AWS_SECRET_ACCESS_KEY" = var.AWS_SECRET_ACCESS_KEY == "disabled" ? var.AWS_SECRET_ACCESS_KEY : "not-used"
+    #"AWS_SECRET_KEY_ID"     = var.AWS_SECRET_KEY_ID == "disabled" ? var.AWS_SECRET_KEY_ID : "not-used"
     #"AWS_SECRET_KEY_ID"     = tostring(try(var.AWS_SECRET_KEY_ID, null))
     #"GOOGLE_CREDENTIALS"    = var.GOOGLE_CREDENTIALS == "disabled" ? var.GOOGLE_CREDENTIALS : "not-used"
   }

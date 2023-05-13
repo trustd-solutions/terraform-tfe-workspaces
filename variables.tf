@@ -1,6 +1,7 @@
 variable "workspaces" {
   description = "Map of workspaces definitions"
   type = map(object({
+    project                   = string
     allow_destroy_plan        = bool
     auto_apply                = bool
     prefix                    = string
@@ -26,11 +27,6 @@ variable "vcs" {
 
 variable "terraform_cloud_org" {
   description = "Terraform Cloud Org to create workspaces in"
-  type        = string
-}
-
-variable "terraform_cloud_workspace_name" {
-  description = "Terraform Cloud Bootstrap Workspace name"
   type        = string
 }
 

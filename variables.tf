@@ -1,7 +1,7 @@
 variable "workspaces" {
   description = "Map of workspaces definitions"
   type = map(object({
-    project                   = string
+    project_id                = string
     allow_destroy_plan        = bool
     auto_apply                = bool
     prefix                    = string

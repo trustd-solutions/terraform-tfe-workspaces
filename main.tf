@@ -1,6 +1,6 @@
 resource "tfe_workspace" "this" {
   for_each                  = var.workspaces
-  project                   = each.value.project
+  project_id                = each.value.project_id
   allow_destroy_plan        = each.value.allow_destroy_plan
   auto_apply                = each.value.auto_apply
   description               = each.value.description

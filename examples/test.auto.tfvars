@@ -22,15 +22,7 @@ workspaces = {
       key  = "value",
       key1 = "value1",
     }
-    sensitive_env_vars = {
-      key  = "value",
-      key1 = "value1",
-    }
     terraform_vars = {
-      key  = "value",
-      key1 = "value1",
-    }
-    sensitive_terraform_vars = {
       key  = "value",
       key1 = "value1",
     }

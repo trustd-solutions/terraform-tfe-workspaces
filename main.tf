@@ -4,7 +4,6 @@ resource "tfe_workspace" "this" {
   allow_destroy_plan        = each.value.allow_destroy_plan
   auto_apply                = each.value.auto_apply
   description               = each.value.description
-  execution_mode            = each.value.execution_mode
   global_remote_state       = each.value.global_remote_state
   name                      = "${each.key}-${each.value.environment}"
   organization              = var.terraform_cloud_org
@@ -20,4 +19,10 @@ resource "tfe_workspace" "this" {
     ingress_submodules = var.vcs["ingress_submodules"]
     oauth_token_id     = var.vcs["oauth_token_id"]
   }
+}
+
+resource "tfe_workspace_settings" "this" {
+  for_each                  = var.workspaces
+  workspace_id              = tfe_workspace.this[each.key].id
+  execution_mode            = each.value.execution_mode
 }

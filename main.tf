@@ -1,6 +1,6 @@
 resource "tfe_workspace" "this" {
   for_each                  = var.workspaces
-  project_id                = each.value.project_id
+  project_id                = data.tfe_project.this[each.key].id
   allow_destroy_plan        = each.value.allow_destroy_plan
   auto_apply                = each.value.auto_apply
   description               = each.value.description
@@ -9,10 +9,10 @@ resource "tfe_workspace" "this" {
   organization              = var.terraform_cloud_org
   queue_all_runs            = each.value.queue_all_runs
   remote_state_consumer_ids = each.value.remote_state_consumer_ids
-  speculative_enabled       = each.value.speculative_enabled
+  speculative_enabled       = each.value.speculative_runs
   tag_names                 = each.value.tag_names
   terraform_version         = each.value.terraform_version
-  working_directory         = "${lookup(each.value, "prefix", "")}/${each.key}/"
+  working_directory         = "${lookup(each.value, "working_directory_prefix", "")}/${each.key}/"
   vcs_repo {
     branch             = var.vcs["branch"]
     identifier         = var.vcs["identifier"]
@@ -22,7 +22,7 @@ resource "tfe_workspace" "this" {
 }
 
 resource "tfe_workspace_settings" "this" {
-  for_each                  = var.workspaces
-  workspace_id              = tfe_workspace.this[each.key].id
-  execution_mode            = each.value.execution_mode
+  for_each       = var.workspaces
+  workspace_id   = tfe_workspace.this[each.key].id
+  execution_mode = each.value.execution_mode
 }

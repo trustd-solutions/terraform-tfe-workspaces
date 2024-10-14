@@ -24,10 +24,11 @@ variable "workspaces" {
 variable "vcs" {
   description = "Settings for the workspace's VCS repository, enabling the UI/VCS-driven run workflow."
   type = object({
-    branch             = string
-    identifier         = string
-    ingress_submodules = bool
-    oauth_token_id     = string
+    branch                     = string
+    identifier                 = string
+    ingress_submodules         = bool
+    oauth_token_id             = string
+    github_app_installation_id = string
   })
 }
 

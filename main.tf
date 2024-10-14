@@ -14,10 +14,11 @@ resource "tfe_workspace" "this" {
   terraform_version         = each.value.terraform_version
   working_directory         = "${lookup(each.value, "working_directory_prefix", "")}/${each.key}/"
   vcs_repo {
-    branch             = var.vcs["branch"]
-    identifier         = var.vcs["identifier"]
-    ingress_submodules = var.vcs["ingress_submodules"]
-    oauth_token_id     = var.vcs["oauth_token_id"]
+    branch                     = var.vcs["branch"]
+    identifier                 = var.vcs["identifier"]
+    ingress_submodules         = var.vcs["ingress_submodules"]
+    oauth_token_id             = try(var.vcs["oauth_token_id"], null)
+    github_app_installation_id = try(var.vcs["github_app_installation_id"], null)
   }
 }
 

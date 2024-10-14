@@ -27,9 +27,14 @@ variable "vcs" {
     branch                     = string
     identifier                 = string
     ingress_submodules         = bool
-    oauth_token_id             = string
-    github_app_installation_id = string
+    oauth_token_id             = optional(string)
+    github_app_installation_id = optional(string)
   })
+
+  validation {
+    condition = !(var.vcs["oauth_token_id"] != null && var.vcs["github_app_installation_id"] != null)
+    error_message = "You must provide either 'oauth_token_id' or 'github_app_installation_id', but not both"
+  }
 }
 
 variable "terraform_cloud_org" {

@@ -17,8 +17,8 @@ resource "tfe_workspace" "this" {
     branch                     = var.vcs["branch"]
     identifier                 = var.vcs["identifier"]
     ingress_submodules         = var.vcs["ingress_submodules"]
-    oauth_token_id             = try(var.vcs["oauth_token_id"], null)
-    github_app_installation_id = try(var.vcs["github_app_installation_id"], null)
+    oauth_token_id             = var.vcs["oauth_token_id"]
+    github_app_installation_id = var.vcs["github_app_installation_id"]
   }
 }
 

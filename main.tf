@@ -39,6 +39,6 @@ resource "tfe_workspace_variable_set" "this" {
       ]
     ]) : "${item.workspace_key}.${item.varset_name}" => item
   }
-  variable_set_id = data.tfe_variable_set.this[each.key].id
+  variable_set_id = data.tfe_variable_set.this[each.value.varset_name].id
   workspace_id    = tfe_workspace.this[each.value.workspace_key].id
 }

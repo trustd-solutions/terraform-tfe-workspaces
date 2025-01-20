@@ -32,12 +32,12 @@ resource "tfe_workspace_variable_set" "this" {
   for_each = {
     for item in flatten([
       for ws_key, ws in var.workspaces : [
-        for vs_id in coalesce(ws.variable_set_ids, []) : {
+        for vs_name in coalesce(ws.variable_set_names, []) : {
           workspace_key = ws_key
-          varset_id     = vs_id
+          varset_name   = vs_name
         }
       ]
-    ]) : "${item.workspace_key}.${item.varset_id}" => item
+    ]) : "${item.workspace_key}.${item.varset_name}" => item
   }
   variable_set_id = data.tfe_variable_set.this[each.key].id
   workspace_id    = tfe_workspace.this[each.value.workspace_key].id

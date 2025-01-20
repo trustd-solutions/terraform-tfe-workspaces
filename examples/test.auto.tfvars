@@ -14,6 +14,7 @@ workspaces = {
     speculative_runs          = true
     tag_names                 = ["tag1", "tag2"]
     terraform_version         = "1.0.0"
+    variable_set_names        = ["AWS Credentials"]
     working_directory_prefix  = "aws"
     env_vars = {
       key  = "value",

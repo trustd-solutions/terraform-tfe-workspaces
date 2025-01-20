@@ -1,6 +1,10 @@
 terraform {
-  required_version = "1.9.5"
+  required_version = "1.10.3"
   required_providers {
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = "0.62.0"
+    }
     template = {
       source  = "hashicorp/template"
       version = "2.2.0"

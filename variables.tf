@@ -17,7 +17,7 @@ variable "workspaces" {
     terraform_version         = string
     vendors_vars              = list(string)
     working_directory_prefix  = string
-    variable_set_ids         = list(string)
+    variable_set_names        = list(string)
     workspace_name            = optional(string)
   }))
 }

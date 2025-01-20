@@ -10,8 +10,7 @@ resource "tfe_workspace" "this" {
   speculative_enabled = each.value.speculative_runs
   tag_names           = each.value.tag_names
   terraform_version   = each.value.terraform_version
-
-  working_directory = "${lookup(each.value, "working_directory_prefix", "")}/${each.key}/"
+  working_directory   = "${lookup(each.value, "working_directory_prefix", "")}/${each.key}/"
   vcs_repo {
     branch                     = var.vcs["branch"]
     identifier                 = var.vcs["identifier"]
@@ -40,7 +39,6 @@ resource "tfe_workspace_variable_set" "this" {
       ]
     ]) : "${item.workspace_key}.${item.varset_id}" => item
   }
-
-  variable_set_id = each.value.varset_id
+  variable_set_id = data.tfe_variable_set.this[each.key].id
   workspace_id    = tfe_workspace.this[each.value.workspace_key].id
 }

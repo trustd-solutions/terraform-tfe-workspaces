@@ -5,7 +5,11 @@ data "tfe_project" "this" {
 }
 
 data "tfe_variable_set" "this" {
-  for_each     = var.workspaces
-  name         = each.value.variable_set_name
+  for_each = toset(
+    flatten([
+      for k, v in var.workspaces : v.variable_set_names
+    ])
+  )
+  name         = each.value
   organization = var.terraform_cloud_org
 }

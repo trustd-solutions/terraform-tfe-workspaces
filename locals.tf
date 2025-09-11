@@ -14,7 +14,7 @@ locals {
   terraform_vars = {
     for v in flatten([
       for key, workspace in var.workspaces : [
-        for var_key, var_value in workspace.terraform_vars : {
+        for var_key, var_value in(workspace.terraform_vars != null ? workspace.terraform_vars : {}) : {
           workspace_name = key
           var_key        = var_key
           var_value      = var_value

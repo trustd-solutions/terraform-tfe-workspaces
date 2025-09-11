@@ -2,7 +2,7 @@ locals {
   env_vars = {
     for v in flatten([
       for key, workspace in var.workspaces : [
-        for var_key, var_value in workspace.env_vars : {
+        for var_key, var_value in(workspace.env_vars != null ? workspace.env_vars : {}) : {
           workspace_name = key
           var_key        = var_key
           var_value      = var_value

@@ -40,7 +40,7 @@ resource "tfe_workspace_settings" "this" {
   agent_pool_id             = var.workspace_settings.agent_pool_id
   execution_mode            = var.workspace_settings.execution_mode
   global_remote_state       = var.workspace_settings.global_remote_state
-  remote_state_consumer_ids = each.value.global_remote_state == false ? each.value.remote_state_consumer_ids : null
+  remote_state_consumer_ids = var.workspace_settings.global_remote_state == false ? each.value.remote_state_consumer_ids : null
 }
 
 resource "tfe_workspace_variable_set" "this" {

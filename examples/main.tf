@@ -1,8 +1,8 @@
 module "workspaces" {
-  source                         = "trustd-solutions/workspaces/tfe"
-  version                        = "2.3.1"
-  terraform_cloud_org            = var.terraform_cloud_org
-  terraform_cloud_token          = var.terraform_cloud_token
-  workspaces                     = var.workspaces
-  vcs                            = var.vcs
+  source                = "../"
+  terraform_cloud_org   = var.terraform_cloud_org
+  terraform_cloud_token = var.terraform_cloud_token
+  workspaces            = var.workspaces
+  vcs                   = var.vcs
+  workspace_settings    = var.workspace_settings
 }

@@ -13,3 +13,13 @@ data "tfe_variable_set" "this" {
   name         = each.value
   organization = var.terraform_cloud_org
 }
+
+data "tfe_workspace" "run_triggers" {
+  for_each = toset(
+    flatten([
+      for k, v in var.workspaces : v.run_triggers != null ? v.run_triggers : []
+    ])
+  )
+  name         = each.value
+  organization = var.terraform_cloud_org
+}

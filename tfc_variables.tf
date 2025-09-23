@@ -1,5 +1,5 @@
 resource "tfe_variable" "terraform_variable" {
-  for_each     = { for v in local.terraform_vars : "${v.workspace_name}.${v.var_key}" => v }
+  for_each     = local.terraform_vars
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "terraform"
@@ -7,7 +7,7 @@ resource "tfe_variable" "terraform_variable" {
 }
 
 resource "tfe_variable" "environment_variable" {
-  for_each     = { for v in local.env_vars : "${v.workspace_name}.${v.var_key}" => v }
+  for_each     = local.env_vars
   key          = each.value.var_key
   value        = each.value.var_value
   category     = "env"
